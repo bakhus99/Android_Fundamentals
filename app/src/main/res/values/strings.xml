@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Android Fundamental</string>
+    <string name="action_adventure_fantasy">Action, Adventure, Fantasy</string>
+    <string name="avengers_title">AVENGERS: \n END GAME</string>
+    <string name="pg13">13+</string>
+    <string name="back">Back</string>
+    <string name="reviews">125 Reviews</string>
+    <string name="text_overview">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
 </resources>
