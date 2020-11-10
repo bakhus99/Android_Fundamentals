@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,10 +8,11 @@
     android:background="@color/background"
     tools:context=".MovieDeatilsActivity">
 
+
     <ImageView
         android:id="@+id/bgAvengers"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="275dp"
         android:scaleType="center"
         android:adjustViewBounds="true"
         android:background="@drawable/bg_avengers"
@@ -60,7 +62,7 @@
         app:layout_constraintBottom_toTopOf="@id/barrierHeaderBottom"
         app:layout_constraintStart_toEndOf="@+id/ivArrowBack"
         app:layout_constraintTop_toBottomOf="@id/barrierHeaderTop"
-         />
+        />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierHeaderBottom"
@@ -74,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_4x"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="660dp"
         android:layout_marginEnd="@dimen/space_4x"
         android:layout_marginBottom="478dp"
         android:orientation="vertical"
@@ -221,7 +223,7 @@
         android:layout_marginStart="@dimen/space_4x"
         android:textColor="@color/titleWhite"
         app:layout_constraintTop_toBottomOf="@id/overview"
-         />
+        />
 
     <ImageView
         android:id="@+id/robert_jr"
@@ -309,7 +311,6 @@
         android:textColor="@color/namesColor"
         app:layout_constraintStart_toStartOf="@+id/chris_h"
         app:layout_constraintTop_toBottomOf="@+id/chris_h" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
