@@ -42,10 +42,10 @@
                 android:id="@+id/ivArrowBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_2x"
                 android:contentDescription="@string/back"
                 android:gravity="center"
-                android:layout_marginEnd="@dimen/space_2x"
-                android:src="@drawable/ic_arrow_back"/>
+                android:src="@drawable/ic_arrow_back" />
 
             <TextView
                 android:id="@+id/tvBack"
@@ -57,7 +57,6 @@
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>
-
 
 
         <TextView
@@ -218,8 +217,8 @@
             android:layout_marginTop="@dimen/space_2x"
             android:contentDescription="@string/actor_photo"
             android:src="@drawable/robert_j"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/chris_e"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cast" />
 
         <TextView
@@ -300,8 +299,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </androidx.core.widget.NestedScrollView>
