@@ -6,6 +6,6 @@ import android.os.Bundle
 class MovieDeatilsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_deatils)
+        setContentView(R.layout.activity_movie_details)
     }
 }
