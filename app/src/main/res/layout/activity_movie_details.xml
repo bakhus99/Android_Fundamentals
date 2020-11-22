@@ -71,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="154dp"
+            android:fontFamily="@font/roboto_black"
             android:text="@string/pg13"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,8 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="30dp"
-            android:layout_marginEnd="@dimen/space_4x"
-            android:text="AVENGERS: \nEND GAME"
+            android:fontFamily="@font/roboto_black"
+            android:text="AVENGERS:\nEND GAME"
             android:textColor="@color/titleWhite"
             android:textSize="@dimen/title"
             app:layout_constraintStart_toEndOf="@id/tvAge"
@@ -98,6 +99,7 @@
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="@dimen/space_1x"
             android:layout_marginEnd="@dimen/space_4x"
+            android:fontFamily="@font/roboto_light"
             android:text="@string/action_adventure_fantasy"
             android:textColor="@color/genreColor"
             app:layout_constraintEnd_toEndOf="parent"
@@ -171,6 +173,7 @@
             android:layout_height="13dp"
             android:layout_marginStart="@dimen/space_2x"
             android:layout_marginTop="@dimen/space_2x"
+            android:fontFamily="@font/roboto_black"
             android:gravity="top"
             android:text="@string/reviews"
             android:textColor="@color/reviewColor"
@@ -180,12 +183,12 @@
 
         <TextView
             android:id="@+id/storyLine"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="@dimen/space_4x"
+            android:fontFamily="@font/roboto_black"
             android:text="@string/storyline"
             android:textColor="@color/titleWhite"
             app:layout_constraintEnd_toEndOf="parent"
@@ -199,6 +202,7 @@
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="@dimen/space_1x"
             android:layout_marginEnd="@dimen/space_4x"
+            android:fontFamily="@font/roboto_light"
             android:text="@string/text_overview"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/storyLine" />
@@ -210,117 +214,118 @@
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="@dimen/space_4x"
+            android:fontFamily="@font/roboto_black"
             android:text="@string/cast"
             android:textColor="@color/titleWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/overview" />
 
-        <LinearLayout
-            android:id="@+id/linear_actors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+
+        <ImageView
+            android:id="@+id/robert_jr"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/space_4x"
-            android:layout_marginEnd="@dimen/space_4x"
-            android:orientation="horizontal"
-            android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/space_2x"
+            android:contentDescription="@string/actor_photo"
+            android:src="@drawable/robert_jr"
+            app:layout_constraintBottom_toTopOf="@+id/tvRobertJR"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/chris_e"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cast">
+            app:layout_constraintTop_toBottomOf="@+id/cast" />
 
-            <ImageView
-                android:id="@+id/robert_jr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_2x"
-                android:layout_weight="1"
-                android:contentDescription="@string/actor_photo"
-                android:src="@drawable/robert_jr"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cast" />
+        <TextView
+            android:id="@+id/tvRobertJR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_black"
+            android:text="@string/robert_downey_jr"
+            android:textColor="@color/namesColor"
+            app:layout_constraintEnd_toEndOf="@id/robert_jr"
+            app:layout_constraintStart_toStartOf="@+id/robert_jr"
+            app:layout_constraintTop_toBottomOf="@+id/robert_jr" />
 
-            <!--                    <TextView-->
-            <!--                        android:id="@+id/tvRobertJR"-->
-            <!--                        android:layout_width="80dp"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="@dimen/space_2x"-->
-            <!--                        android:text="@string/robert_downey_jr"-->
-            <!--                        android:textColor="@color/namesColor"-->
-            <!--                        -->
-            <!--                        android:textStyle="bold"-->
-            <!--                        app:layout_constraintTop_toBottomOf="@+id/robert_jr" />-->
 
-            <ImageView
-                android:id="@+id/chris_e"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_2x"
-                android:layout_marginTop="@dimen/space_2x"
-                android:layout_weight="1"
-                android:contentDescription="@string/actor_photo"
-                android:src="@drawable/chris_e"
-                app:layout_constraintEnd_toStartOf="@id/mark_r"
-                app:layout_constraintStart_toEndOf="@id/robert_jr"
-                app:layout_constraintTop_toBottomOf="@id/cast" />
+        <ImageView
+            android:id="@+id/chris_e"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/space_2x"
+            android:layout_marginTop="@dimen/space_2x"
+            android:contentDescription="@string/actor_photo"
+            android:src="@drawable/chris_e"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/mark_r"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/robert_jr"
+            app:layout_constraintTop_toBottomOf="@+id/cast" />
 
-            <!--        <TextView-->
-            <!--            android:id="@+id/tvChrisE"-->
-            <!--            android:layout_width="80dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginTop="@dimen/space_2x"-->
-            <!--            android:text="@string/chris_evans"-->
-            <!--            android:textColor="@color/namesColor"-->
-            <!--            android:textStyle="bold"-->
-            <!--            app:layout_constraintStart_toStartOf="@+id/chris_e"-->
-            <!--            app:layout_constraintTop_toBottomOf="@+id/chris_e" />-->
+        <TextView
+            android:id="@+id/tvChrisE"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/chris_evans"
+            android:textColor="@color/namesColor"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/chris_e"
+            app:layout_constraintStart_toStartOf="@+id/chris_e"
+            app:layout_constraintTop_toBottomOf="@+id/chris_e" />
 
-            <ImageView
-                android:id="@+id/mark_r"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_2x"
-                android:layout_marginTop="@dimen/space_2x"
-                android:layout_weight="1"
-                android:contentDescription="@string/actor_photo"
-                android:src="@drawable/mark_r"
-                app:layout_constraintEnd_toStartOf="@id/chris_h"
-                app:layout_constraintStart_toEndOf="@id/chris_e"
-                app:layout_constraintTop_toBottomOf="@id/cast" />
+        <ImageView
+            android:id="@+id/mark_r"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/space_2x"
+            android:layout_marginTop="@dimen/space_2x"
+            android:contentDescription="@string/actor_photo"
+            android:src="@drawable/mark_r"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/chris_h"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/chris_e"
+            app:layout_constraintTop_toBottomOf="@+id/cast" />
 
-            <!--        <TextView-->
-            <!--            android:id="@+id/tvMarkR"-->
-            <!--            android:layout_width="80dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginTop="@dimen/space_2x"-->
-            <!--            android:text="@string/mark_ruffalo"-->
-            <!--            android:textColor="@color/namesColor"-->
-            <!--            android:textStyle="bold"-->
-            <!--            app:layout_constraintStart_toStartOf="@+id/mark_r"-->
-            <!--            app:layout_constraintTop_toBottomOf="@+id/mark_r" />-->
+        <TextView
+            android:id="@+id/tvMarkR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_2x"
+            android:text="@string/mark_ruffalo"
+            android:textColor="@color/namesColor"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/mark_r"
+            app:layout_constraintStart_toStartOf="@+id/mark_r"
+            app:layout_constraintTop_toBottomOf="@+id/mark_r" />
 
-            <ImageView
-                android:id="@+id/chris_h"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/space_2x"
-                android:layout_marginTop="@dimen/space_2x"
-                android:layout_weight="1"
-                android:contentDescription="@string/actor_photo"
-                android:src="@drawable/chris_h"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cast" />
+        <ImageView
+            android:id="@+id/chris_h"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/space_2x"
+            android:layout_marginTop="@dimen/space_2x"
+            android:layout_marginEnd="@dimen/space_4x"
+            android:contentDescription="@string/actor_photo"
+            android:src="@drawable/chris_h"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/mark_r"
+            app:layout_constraintTop_toBottomOf="@+id/cast" />
 
-            <!--        <TextView-->
-            <!--            android:id="@+id/tvChrisH"-->
-            <!--            android:layout_width="80dp"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginTop="@dimen/space_2x"-->
-            <!--            android:text="@string/chris_hemsworth"-->
-            <!--            android:textColor="@color/namesColor"-->
-            <!--            android:textStyle="bold"-->
-            <!--            app:layout_constraintStart_toStartOf="@+id/chris_h"-->
-            <!--            app:layout_constraintTop_toBottomOf="@+id/chris_h" />-->
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvChrisH"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_2x"
+            android:text="@string/chris_hemsworth"
+            android:textColor="@color/namesColor"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/chris_h"
+            app:layout_constraintStart_toStartOf="@+id/chris_h"
+            app:layout_constraintTop_toBottomOf="@+id/chris_h" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
