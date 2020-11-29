@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="background">#191926</color>
+    <color name="timeColor">#565665</color>
     <color name="titleWhite">#ECECEC</color>
     <color name="genreColor">#FF3466</color>
     <color name="reviewColor">#6D6D80</color>

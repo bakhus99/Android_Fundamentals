@@ -2,17 +2,17 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true"
         android:state_window_focused="true"
-        android:drawable="@drawable/rating_on"/>
+        android:drawable="@drawable/active_star"/>
 
     <item android:state_focused="true"
         android:state_window_focused="true"
-        android:drawable="@drawable/rating_on"/>
+        android:drawable="@drawable/active_star"/>
 
     <item android:state_selected="true"
         android:state_window_focused="true"
-        android:drawable="@drawable/rating_on"/>
+        android:drawable="@drawable/active_star"/>
 
     <item
-        android:drawable="@drawable/rating_on"/>
+        android:drawable="@drawable/active_star"/>
 
 </selector>
