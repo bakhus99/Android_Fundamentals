@@ -15,4 +15,10 @@
     <string name="chris_evans">Chris Evans</string>
     <string name="mark_ruffalo">Mark Ruffalo</string>
     <string name="chris_hemsworth">Chris Hemsworth</string>
+    <string name="bg_poster">background for poster</string>
+    <string name="target">target</string>
+    <string name="movie_list">Movie List</string>
+    <string name="movie_poster">movie poster</string>
+
+    <string name="like">like photo</string>
 </resources>
