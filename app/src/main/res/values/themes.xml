@@ -14,13 +14,13 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="customRatingBar12" parent="Widget.AppCompat.RatingBar.Indicator">
+    <style name="customRatingBar12" parent="Widget.AppCompat.RatingBar.Small">
         <item name="android:progressDrawable">@drawable/rating</item>
         <item name="maxHeight">12dip</item>
         <item name="minHeight">12dip</item>
     </style>
 
-    <style name="customRatingBar8" parent="Widget.AppCompat.RatingBar.Indicator">
+    <style name="customRatingBar8" parent="Widget.AppCompat.RatingBar.Small">
         <item name="android:progressDrawable">@drawable/rating</item>
         <item name="maxHeight">8dip</item>
         <item name="minHeight">8dip</item>
