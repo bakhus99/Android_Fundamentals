@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearLayoutBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
@@ -74,13 +74,14 @@
             android:text="@string/pg13"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutBack" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_4x"
+            android:layout_marginEnd="@dimen/space_4x"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/roboto_bold"
             android:text="AVENGERS:\nEND GAME"
@@ -98,17 +99,18 @@
             android:layout_marginTop="@dimen/space_1x"
             android:layout_marginEnd="@dimen/space_4x"
             android:fontFamily="@font/roboto_regular"
-            android:text="@string/action_adventure_fantasy"
+            android:text="@string/movie_genre"
             android:textColor="@color/genreColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
         <RatingBar
-            android:id="@+id/rating"
-            style="@style/CustomRatingBar"
+            android:id="@+id/ratingBar"
+            style="@style/customRatingBar12"
             android:layout_width="wrap_content"
             android:layout_height="12dp"
+            android:progressDrawable="@drawable/rating"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
@@ -131,8 +133,8 @@
             android:text="@string/reviews"
             android:textColor="@color/reviewColor"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/rating"
-            app:layout_constraintStart_toEndOf="@id/rating"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingBar"
+            app:layout_constraintStart_toEndOf="@id/ratingBar"
             app:layout_constraintTop_toBottomOf="@id/movieGenre" />
 
         <TextView
