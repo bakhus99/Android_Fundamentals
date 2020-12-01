@@ -45,7 +45,6 @@
             app:layout_constraintStart_toEndOf="@id/ivTarget"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageView
             android:id="@+id/ivPosterPhoto"
             android:layout_width="wrap_content"
@@ -136,7 +135,6 @@
             android:id="@+id/tvMovieName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="@dimen/space_2x"
             android:layout_marginTop="@dimen/space_2x"
             android:fontFamily="@font/roboto_bold"

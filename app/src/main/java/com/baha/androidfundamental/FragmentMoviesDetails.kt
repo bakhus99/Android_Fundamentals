@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 
-class FragmentMoviesDetails :Fragment(){
-    private var onMovieBackClickedListener: MovieBackClickListener? = null
-
+class FragmentMoviesDetails : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,18 +18,10 @@ class FragmentMoviesDetails :Fragment(){
         return inflater.inflate(R.layout.fragment_movies_details, container, false)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        onMovieBackClickedListener = context as? MovieBackClickListener
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<LinearLayout>(R.id.linearLayoutBack).setOnClickListener {
-            onMovieBackClickedListener?.onMovieBackClicked()
+            fragmentManager?.popBackStack()
         }
-    }
-    interface MovieBackClickListener {
-        fun onMovieBackClicked()
     }
 }

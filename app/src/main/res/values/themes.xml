@@ -16,16 +16,14 @@
 
     <style name="customRatingBar12" parent="Widget.AppCompat.RatingBar.Small">
         <item name="android:progressDrawable">@drawable/rating</item>
-        <item name="maxHeight">12dip</item>
-        <item name="minHeight">12dip</item>
+        <item name="maxHeight">12dp</item>
+        <item name="minHeight">12dp</item>
     </style>
 
     <style name="customRatingBar8" parent="Widget.AppCompat.RatingBar.Small">
         <item name="android:progressDrawable">@drawable/rating</item>
-        <item name="maxHeight">8dip</item>
-        <item name="minHeight">8dip</item>
+        <item name="maxHeight">8dp</item>
+        <item name="minHeight">8dp</item>
     </style>
 
-
-    
 </resources>

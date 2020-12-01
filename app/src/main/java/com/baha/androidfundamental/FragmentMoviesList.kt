@@ -9,15 +9,6 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 
 class FragmentMoviesList : Fragment() {
-    private var onMovieClickedListener: MovieClickListener? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        onMovieClickedListener = context as? MovieClickListener
-    }
-    override fun onDetach() {
-        super.onDetach()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,11 +21,10 @@ class FragmentMoviesList : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<ImageView>(R.id.bgPoster).setOnClickListener {
-            onMovieClickedListener?.onMovieClicked()
+            fragmentManager?.beginTransaction()
+                ?.replace(R.id.frame,FragmentMoviesDetails())
+                ?.addToBackStack(null)
+                ?.commit()
         }
-    }
-
-    interface MovieClickListener {
-        fun onMovieClicked()
     }
 }
