@@ -1,6 +1,5 @@
 package com.baha.androidfundamental
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +21,7 @@ class FragmentMoviesList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.findViewById<ImageView>(R.id.bgPoster).setOnClickListener {
             fragmentManager?.beginTransaction()
-                ?.replace(R.id.frame,FragmentMoviesDetails())
+                ?.replace(R.id.frame, FragmentMoviesDetails())
                 ?.addToBackStack(null)
                 ?.commit()
         }
