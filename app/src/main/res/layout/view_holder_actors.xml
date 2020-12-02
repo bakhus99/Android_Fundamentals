@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/robert_jr"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/space_4x"
+        android:layout_marginTop="@dimen/space_2x"
+        android:contentDescription="@string/actor_photo"
+        android:src="@drawable/robert_jr"
+        app:layout_constraintBottom_toTopOf="@+id/tvRobertJR"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/chris_e"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvRobertJR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/robert_downey_jr"
+        android:textColor="@color/namesColor"
+        app:layout_constraintEnd_toEndOf="@id/robert_jr"
+        app:layout_constraintStart_toStartOf="@+id/robert_jr"
+        app:layout_constraintTop_toBottomOf="@+id/robert_jr" />
+
+    <ImageView
+        android:id="@+id/chris_e"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginTop="@dimen/space_2x"
+        android:contentDescription="@string/actor_photo"
+        android:src="@drawable/chris_e"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/mark_r"
+        app:layout_constraintStart_toEndOf="@+id/robert_jr"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvChrisE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/chris_evans"
+        android:textColor="@color/namesColor"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/chris_e"
+        app:layout_constraintStart_toStartOf="@+id/chris_e"
+        app:layout_constraintTop_toBottomOf="@+id/chris_e" />
+
+    <ImageView
+        android:id="@+id/mark_r"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginTop="@dimen/space_2x"
+        android:contentDescription="@string/actor_photo"
+        android:src="@drawable/mark_r"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/chris_h"
+        app:layout_constraintStart_toEndOf="@+id/chris_e"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMarkR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_2x"
+        android:text="@string/mark_ruffalo"
+        android:textColor="@color/namesColor"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/mark_r"
+        app:layout_constraintStart_toStartOf="@+id/mark_r"
+        app:layout_constraintTop_toBottomOf="@+id/mark_r" />
+
+    <ImageView
+        android:id="@+id/chris_h"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/space_2x"
+        android:layout_marginTop="@dimen/space_2x"
+        android:layout_marginEnd="@dimen/space_4x"
+        android:contentDescription="@string/actor_photo"
+        android:src="@drawable/chris_h"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mark_r"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvChrisH"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_2x"
+        android:text="@string/chris_hemsworth"
+        android:textColor="@color/namesColor"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/chris_h"
+        app:layout_constraintStart_toStartOf="@+id/chris_h"
+        app:layout_constraintTop_toBottomOf="@+id/chris_h" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
