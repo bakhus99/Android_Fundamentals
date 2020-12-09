@@ -6,29 +6,29 @@
 
 
     <ImageView
-        android:id="@+id/robert_jr"
+        android:id="@+id/ivActorPhoto"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/space_4x"
         android:layout_marginTop="@dimen/space_2x"
         android:contentDescription="@string/actor_photo"
         android:src="@drawable/robert_jr"
-        app:layout_constraintBottom_toTopOf="@+id/tvRobertJR"
+        app:layout_constraintBottom_toTopOf="@+id/tvActorName"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/chris_e"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/tvRobertJR"
+        android:id="@+id/tvActorName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/robert_downey_jr"
         android:textColor="@color/namesColor"
-        app:layout_constraintEnd_toEndOf="@id/robert_jr"
-        app:layout_constraintStart_toStartOf="@+id/robert_jr"
-        app:layout_constraintTop_toBottomOf="@+id/robert_jr" />
+        app:layout_constraintEnd_toEndOf="@id/ivActorPhoto"
+        app:layout_constraintStart_toStartOf="@+id/ivActorPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/ivActorPhoto" />
 
     <ImageView
         android:id="@+id/chris_e"
@@ -40,7 +40,7 @@
         android:src="@drawable/chris_e"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/mark_r"
-        app:layout_constraintStart_toEndOf="@+id/robert_jr"
+        app:layout_constraintStart_toEndOf="@+id/ivActorPhoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

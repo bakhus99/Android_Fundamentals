@@ -70,7 +70,7 @@ class FragmentMoviesList : Fragment() {
 
     private fun updateData() {
         (recycler?.adapter as? MovieListAdapter)?.apply {
-            bindMovie(movieList)
+           bindMovie(movieList)
         }
     }
 
@@ -78,12 +78,6 @@ class FragmentMoviesList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recycler = view.findViewById<RecyclerView>(R.id.recyclerViewMovieList)
         recycler?.adapter = MovieListAdapter(clickListener)
-        view.findViewById<RecyclerView>(R.id.recyclerViewMovieList).setOnClickListener {
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.frame, FragmentMoviesDetails())
-                ?.addToBackStack(null)
-                ?.commit()
-        }
     }
 
     private val clickListener = object : MovieListAdapter.OnRecyclerItemClicked{

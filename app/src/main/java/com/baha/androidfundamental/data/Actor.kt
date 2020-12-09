@@ -1,6 +1,6 @@
 package com.baha.androidfundamental.data
 
 data class Actor(
-    val name: String,
+    val actorName: String,
     val actorPhoto: Int
 )
