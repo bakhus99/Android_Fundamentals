@@ -182,10 +182,12 @@
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:orientation="horizontal"
+          android:layout_marginStart="@dimen/space_4x"
+          android:layout_marginEnd="@dimen/space_4x"
           tools:listitem="@layout/view_holder_actors"
-          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
           app:layout_constraintTop_toBottomOf="@id/cast"
-          />
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          tools:itemCount="4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

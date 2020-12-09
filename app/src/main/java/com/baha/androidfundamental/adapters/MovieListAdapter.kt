@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.baha.androidfundamental.data.Movie
 import com.baha.androidfundamental.R
+import com.baha.androidfundamental.data.Movie
 
 class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
     RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
+
     private var movies = listOf<Movie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
@@ -25,7 +26,6 @@ class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
         holder.itemView.setOnClickListener{
             clickListener.onClick(movies[position])
         }
-
     }
 
     override fun getItemCount(): Int = movies.size
@@ -54,6 +54,7 @@ class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
             movieReviews.text = movie.movieReviews
         }
     }
+
     interface OnRecyclerItemClicked{
         fun onClick(movie: Movie)
     }

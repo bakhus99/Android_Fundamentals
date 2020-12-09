@@ -55,6 +55,7 @@ class FragmentMoviesList : Fragment() {
         recycler = null
         super.onDetach()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

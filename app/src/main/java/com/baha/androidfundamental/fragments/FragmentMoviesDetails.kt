@@ -32,6 +32,18 @@ class FragmentMoviesDetails : Fragment() {
             ), Actor(
                 getString(R.string.chris_hemsworth),
                 R.drawable.chris_h
+            ), Actor(
+                getString(R.string.robert_downey_jr),
+                R.drawable.robert_jr
+            ), Actor(
+                getString(R.string.chris_evans),
+                R.drawable.chris_e
+            ), Actor(
+                getString(R.string.mark_ruffalo),
+                R.drawable.mark_r
+            ), Actor(
+                getString(R.string.chris_hemsworth),
+                R.drawable.chris_h
             )
         )
     }

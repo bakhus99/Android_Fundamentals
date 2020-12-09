@@ -30,7 +30,6 @@ class ActorAdapter:RecyclerView.Adapter<ActorsViewHolder>() {
     }
 }
 
-
 class ActorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val actorName: TextView = itemView.findViewById(R.id.tvActorName)
@@ -40,5 +39,4 @@ class ActorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         actorName.text = actor.actorName
         actorPhoto.setImageResource(actor.actorPhoto)
     }
-
 }
