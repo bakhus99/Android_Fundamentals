@@ -19,8 +19,8 @@
     <string name="target">target</string>
     <string name="movie_list">Movie List</string>
     <string name="movie_poster">movie poster</string>
-
     <string name="like">like photo</string>
     <string name="avengers_end_game">Avengers: End Game</string>
     <string name="movie_duration">137 min</string>
+    <string name="pg16">16+</string>
 </resources>
