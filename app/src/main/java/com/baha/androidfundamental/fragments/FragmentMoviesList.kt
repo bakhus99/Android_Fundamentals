@@ -15,6 +15,7 @@ class FragmentMoviesList : Fragment() {
 
     private var recycler: RecyclerView? = null
     private var movieList = MoviesList.getMovieList()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,7 +31,7 @@ class FragmentMoviesList : Fragment() {
 
     private fun updateData() {
         (recycler?.adapter as? MovieListAdapter)?.apply {
-           bindMovie(movieList)
+            bindMovie(movieList)
         }
     }
 
@@ -40,19 +41,15 @@ class FragmentMoviesList : Fragment() {
         recycler?.adapter = MovieListAdapter(clickListener)
     }
 
-    private val clickListener = object : MovieListAdapter.OnRecyclerItemClicked{
-        override fun onClick(movie: Movie) {
-            doClick(movie)
-        }
-    }
+    private val clickListener =
+        MovieListAdapter.OnRecyclerItemClicked { movie -> doClick(movie) }
 
     private fun doClick(movie: Movie) {
 
         fragmentManager?.beginTransaction()
-                ?.replace(R.id.frame, FragmentMoviesDetails())
-                ?.addToBackStack(null)
-                ?.commit()
-
+            ?.replace(R.id.frame, FragmentMoviesDetails())
+            ?.addToBackStack(null)
+            ?.commit()
     }
 
     companion object {

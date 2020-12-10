@@ -28,6 +28,7 @@ class FragmentMoviesDetails : Fragment() {
         super.onStart()
         updateData()
     }
+    
     private fun updateData(){
         adapter.bindActors(actors)
     }

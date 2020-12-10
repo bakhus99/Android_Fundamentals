@@ -55,7 +55,7 @@ class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
         }
     }
 
-    interface OnRecyclerItemClicked{
+   fun interface OnRecyclerItemClicked{
         fun onClick(movie: Movie)
     }
 }
