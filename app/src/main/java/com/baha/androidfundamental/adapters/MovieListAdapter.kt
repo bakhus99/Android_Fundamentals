@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.data.Movie
 
-class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
-    RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
+class MovieListAdapter(private val clickListener: ItemClickListener ) :
+    RecyclerView.Adapter<MovieListViewHolder>() {
 
     private var movies = listOf<Movie>()
 
@@ -23,7 +23,7 @@ class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
 
         holder.bind(movies[position])
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             clickListener.onClick(movies[position])
         }
     }
@@ -34,6 +34,11 @@ class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
         movies = newMovie
         notifyDataSetChanged()
     }
+
+    fun interface ItemClickListener {
+        fun onClick(movie: Movie)
+    }
+}
 
     class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -55,7 +60,4 @@ class MovieListAdapter(private val clickListener: OnRecyclerItemClicked) :
         }
     }
 
-   fun interface OnRecyclerItemClicked{
-        fun onClick(movie: Movie)
-    }
-}
+

@@ -16,6 +16,7 @@ class FragmentMoviesDetails : Fragment() {
     private var recycler: RecyclerView? = null
     private val actors = ActorsList.getActorsList()
     private val adapter = ActorAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
