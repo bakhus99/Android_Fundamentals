@@ -14,11 +14,11 @@ import com.baha.androidfundamental.adapters.MovieListAdapter
 import com.baha.androidfundamental.data.Movie
 import com.bumptech.glide.load.engine.Resource
 
-class FragmentMoviesList : Fragment() {
-
+class FragmentMoviesList : Fragment(),MovieListAdapter.ItemClickListener {
 
     private var recycler: RecyclerView? = null
     private var movieList = MoviesList.getMovieList()
+    val adapter = MovieListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,30 +34,29 @@ class FragmentMoviesList : Fragment() {
     }
 
     private fun updateData() {
-        (recycler?.adapter as? MovieListAdapter)?.apply {
-          bindMovie(movieList)
-        }
+//        (recycler?.adapter as? MovieListAdapter)?.apply {
+//          bindMovie(movieList)
+//        }
+
+       adapter.bindMovie(movieList)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycler = view.findViewById<RecyclerView>(R.id.recyclerViewMovieList)
-        recycler?.adapter = MovieListAdapter(clickListener)
+        adapter.onMovieClickListener = this
+
+        recycler?.adapter = adapter
+        adapter.bindMovie(movieList)
+
         getColumns()
     }
 
-    private fun getColumns(): Int {
-        val displayMetrics:DisplayMetrics = Resources.getSystem().displayMetrics
-        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
-        val scalingFactor = 180
-        return (dpWidth/scalingFactor).toInt()
-    }
-
     private val clickListener =
-        MovieListAdapter.ItemClickListener { movie -> doClick(movie) }
+        MovieListAdapter.ItemClickListener { movie -> onClick(movie) }
 
-    private fun doClick(movie: Movie) {
-
+    override fun onClick(movie: Movie) {
         fragmentManager?.beginTransaction()
             ?.replace(R.id.frame, FragmentMoviesDetails())
             ?.addToBackStack(null)
@@ -66,6 +65,12 @@ class FragmentMoviesList : Fragment() {
 
     companion object {
         fun newInstance() = FragmentMoviesList()
+    }
+    private fun getColumns(): Int {
+        val displayMetrics:DisplayMetrics = Resources.getSystem().displayMetrics
+        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
+        val scalingFactor = 180
+        return (dpWidth/scalingFactor).toInt()
     }
 
 

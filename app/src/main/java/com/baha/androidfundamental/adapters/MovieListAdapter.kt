@@ -9,38 +9,42 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.data.Movie
 
-class MovieListAdapter(private val clickListener: ItemClickListener ) :
+class MovieListAdapter() :
     RecyclerView.Adapter<MovieListViewHolder>() {
 
     private var movies = listOf<Movie>()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movies, parent, false)
-        return MovieListViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
-
-        holder.bind(movies[position])
-        holder.itemView.setOnClickListener {
-            clickListener.onClick(movies[position])
-        }
-    }
-
-    override fun getItemCount(): Int = movies.size
+    var onMovieClickListener:ItemClickListener? = null
 
     fun bindMovie(newMovie: List<Movie>) {
         movies = newMovie
         notifyDataSetChanged()
     }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
+//        val view =
+//            LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movies, parent, false)
+//        return MovieListViewHolder(view,onMovieClickListener)
+        return MovieListViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movies, parent, false),onMovieClickListener
+        )
+    }
+
+    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
+
+        holder.bind(movies[position])
+        holder.itemView.setOnClickListener {
+            onMovieClickListener?.onClick(movies[position])
+        }
+    }
+
+    override fun getItemCount(): Int = movies.size
+
     fun interface ItemClickListener {
         fun onClick(movie: Movie)
     }
 }
 
-    class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MovieListViewHolder(itemView: View, private val onMovieClickListener: MovieListAdapter.ItemClickListener?) : RecyclerView.ViewHolder(itemView) {
 
         private val moviePoster: ImageView = itemView.findViewById(R.id.ivPosterPhoto)
         private val movieName: TextView = itemView.findViewById(R.id.tvMovieName)
@@ -57,6 +61,9 @@ class MovieListAdapter(private val clickListener: ItemClickListener ) :
             movieGenre.text = movie.movieGenre
             moviePg.text = movie.moviePg
             movieReviews.text = movie.movieReviews
+            itemView.setOnClickListener {
+                onMovieClickListener?.onClick(movie)
+            }
         }
     }
 

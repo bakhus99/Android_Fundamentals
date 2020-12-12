@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.ActorsList
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.ActorAdapter
+import com.baha.androidfundamental.data.Movie
 
 class FragmentMoviesDetails : Fragment() {
 
