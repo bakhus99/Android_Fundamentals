@@ -33,5 +33,13 @@ object MoviesList {
             "13+",
             R.drawable.ww
         )
+        , Movie(
+            "Wonder Woman 1984",
+            "120 min",
+            "Action, Adventure, Fantasy",
+            "74 reviews",
+            "13+",
+            R.drawable.ww
+        )
     )
 }

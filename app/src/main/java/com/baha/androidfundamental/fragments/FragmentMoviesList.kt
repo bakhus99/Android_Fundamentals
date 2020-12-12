@@ -1,24 +1,24 @@
 package com.baha.androidfundamental.fragments
 
-import android.content.res.Resources
+import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.MoviesList
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.MovieListAdapter
 import com.baha.androidfundamental.data.Movie
-import com.bumptech.glide.load.engine.Resource
 
-class FragmentMoviesList : Fragment(),MovieListAdapter.ItemClickListener {
+class FragmentMoviesList : Fragment() {
 
     private var recycler: RecyclerView? = null
     private var movieList = MoviesList.getMovieList()
-    val adapter = MovieListAdapter()
+    private val adapter = MovieListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,29 +34,28 @@ class FragmentMoviesList : Fragment(),MovieListAdapter.ItemClickListener {
     }
 
     private fun updateData() {
-//        (recycler?.adapter as? MovieListAdapter)?.apply {
-//          bindMovie(movieList)
-//        }
-
-       adapter.bindMovie(movieList)
-
+        adapter.bindMovie(movieList)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycler = view.findViewById<RecyclerView>(R.id.recyclerViewMovieList)
-        adapter.onMovieClickListener = this
-
+        adapter.onMovieClickListener = clickListener
         recycler?.adapter = adapter
-        adapter.bindMovie(movieList)
-
-        getColumns()
+        val manager = GridLayoutManager(
+            context,
+            getColumns(
+                requireContext(),
+                requireContext().resources.getDimension(R.dimen.scalingFactor)
+            )
+        )
+        recycler?.layoutManager = manager
     }
 
     private val clickListener =
         MovieListAdapter.ItemClickListener { movie -> onClick(movie) }
 
-    override fun onClick(movie: Movie) {
+    private fun onClick(movie: Movie) {
         fragmentManager?.beginTransaction()
             ?.replace(R.id.frame, FragmentMoviesDetails())
             ?.addToBackStack(null)
@@ -66,12 +65,10 @@ class FragmentMoviesList : Fragment(),MovieListAdapter.ItemClickListener {
     companion object {
         fun newInstance() = FragmentMoviesList()
     }
-    private fun getColumns(): Int {
-        val displayMetrics:DisplayMetrics = Resources.getSystem().displayMetrics
-        val dpWidth = displayMetrics.widthPixels / displayMetrics.density
-        val scalingFactor = 180
-        return (dpWidth/scalingFactor).toInt()
+
+    private fun getColumns(context: Context, columnWidthDp: Float): Int {
+        val displayMetrics: DisplayMetrics = context.resources.displayMetrics
+        val dpWidth = displayMetrics.widthPixels
+        return (dpWidth / columnWidthDp).toInt()
     }
-
-
 }

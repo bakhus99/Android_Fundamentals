@@ -40,8 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
             app:layout_constraintTop_toBottomOf="@id/tvMovieList"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,3 +49,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
+
+<!--//app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:spanCount="2"-->
