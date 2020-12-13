@@ -49,6 +49,3 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
-
-<!--//app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:spanCount="2"-->
