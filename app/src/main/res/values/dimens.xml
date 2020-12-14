@@ -5,5 +5,6 @@
     <dimen name="space_2x">8dp</dimen>
     <dimen name="space_1x">4dp</dimen>
     <dimen name="title">32sp</dimen>
+    <dimen name="scalingFactor">170dp</dimen>
 
 </resources>

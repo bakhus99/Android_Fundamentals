@@ -3,23 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background">
-
-        <ImageView
-            android:id="@+id/bgPoster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginTop="38dp"
-            android:contentDescription="@string/bg_poster"
-            android:src="@drawable/bg_poster"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivTarget" />
 
         <ImageView
             android:id="@+id/ivTarget"
@@ -45,115 +35,17 @@
             app:layout_constraintStart_toEndOf="@id/ivTarget"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivPosterPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_4x"
-            android:layout_marginTop="40dp"
-            android:contentDescription="@string/movie_poster"
-            android:foreground="@drawable/gradient"
-            android:src="@drawable/avg"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMovieList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tvMovieList"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivTarget" />
-
-        <ImageView
-            android:id="@+id/ivPg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="@dimen/space_2x"
-            android:src="@drawable/pg"
-            app:layout_constraintStart_toStartOf="@id/ivPosterPhoto"
-            app:layout_constraintTop_toTopOf="@id/ivPosterPhoto" />
-
-        <TextView
-            android:id="@+id/tvPg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/pg13"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/ivPg"
-            app:layout_constraintEnd_toEndOf="@id/ivPg"
-            app:layout_constraintStart_toStartOf="@id/ivPg"
-            app:layout_constraintTop_toTopOf="@id/ivPg" />
-
-        <ImageView
-            android:id="@+id/ivLike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="6dp"
-            android:contentDescription="@string/like"
-            android:src="@drawable/like"
-            app:layout_constraintEnd_toEndOf="@id/ivPosterPhoto"
-            app:layout_constraintTop_toTopOf="@id/ivPosterPhoto" />
-
-        <TextView
-            android:id="@+id/tvGenre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_2x"
-            android:layout_marginEnd="@dimen/space_4x"
-            android:layout_marginBottom="22dp"
-            android:text="@string/movie_genre"
-            android:textColor="@color/genreColor"
-            android:textSize="8sp"
-            app:layout_constraintBottom_toBottomOf="@id/ivPosterPhoto"
-            app:layout_constraintStart_toStartOf="@id/ivPosterPhoto" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="8dp"
-            android:layout_marginStart="@dimen/space_2x"
-            android:layout_marginBottom="@dimen/space_2x"
-            android:numStars="5"
-            android:progressDrawable="@drawable/rating_small"
-            android:rating="4"
-            app:layout_constraintBottom_toBottomOf="@id/ivPosterPhoto"
-            app:layout_constraintEnd_toStartOf="@id/tvReviews"
-            app:layout_constraintStart_toStartOf="@id/ivPosterPhoto"
-            app:layout_constraintTop_toBottomOf="@id/tvGenre" />
-
-        <TextView
-            android:id="@+id/tvReviews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_1x"
-            android:fontFamily="@font/roboto_bold"
-            android:text="@string/reviews"
-            android:textColor="@color/reviewColor"
-            android:textSize="8sp"
-            app:layout_constraintBottom_toBottomOf="@id/ratingBar"
-            app:layout_constraintStart_toEndOf="@id/ratingBar"
-            app:layout_constraintTop_toTopOf="@id/ratingBar" />
-
-        <TextView
-            android:id="@+id/tvMovieName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_2x"
-            android:layout_marginTop="@dimen/space_2x"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Avengers: End Game"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="@id/bgPoster"
-            app:layout_constraintTop_toBottomOf="@id/ivPosterPhoto" />
-
-        <TextView
-            android:id="@+id/tvMovieTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_2x"
-            android:fontFamily="@font/roboto_bold"
-            android:text="137 min"
-            android:textColor="@color/timeColor"
-            app:layout_constraintBottom_toBottomOf="@id/bgPoster"
-            app:layout_constraintStart_toStartOf="@id/bgPoster"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieName" />
+            tools:listitem="@layout/view_holder_movies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:itemCount="4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
