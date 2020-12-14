@@ -38,7 +38,8 @@ class MovieListAdapter() :
     fun interface ItemClickListener {
         fun onClick(movie: Movie)
     }
-    class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val moviePoster: ImageView = itemView.findViewById(R.id.ivPosterPhoto)
         private val movieName: TextView = itemView.findViewById(R.id.tvMovieName)
