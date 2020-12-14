@@ -23,7 +23,7 @@ class MovieListAdapter() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movies, parent, false)
-        return MovieListViewHolder(view, onMovieClickListener)
+        return MovieListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
@@ -38,7 +38,7 @@ class MovieListAdapter() :
     fun interface ItemClickListener {
         fun onClick(movie: Movie)
     }
-    class MovieListViewHolder(itemView: View, private val onMovieClickListener: MovieListAdapter.ItemClickListener?) : RecyclerView.ViewHolder(itemView) {
+    class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val moviePoster: ImageView = itemView.findViewById(R.id.ivPosterPhoto)
         private val movieName: TextView = itemView.findViewById(R.id.tvMovieName)
@@ -54,9 +54,6 @@ class MovieListAdapter() :
             movieGenre.text = movie.movieGenre
             moviePg.text = movie.moviePg
             movieReviews.text = movie.movieReviews
-            itemView.setOnClickListener {
-                onMovieClickListener?.onClick(movie)
-            }
         }
     }
 }
