@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.data.Actor
+import com.bumptech.glide.Glide
 
 class ActorAdapter:RecyclerView.Adapter<ActorsViewHolder>() {
 
@@ -37,7 +38,9 @@ class ActorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val actorPhoto: ImageView = itemView.findViewById(R.id.ivActorPhoto)
 
     fun bind(actor: Actor) {
-        actorName.text = actor.actorName
-        actorPhoto.setImageResource(actor.actorPhoto)
+        actorName.text = actor.name
+        Glide.with(itemView.context)
+            .load(actor.picture)
+            .into(actorPhoto)
     }
 }

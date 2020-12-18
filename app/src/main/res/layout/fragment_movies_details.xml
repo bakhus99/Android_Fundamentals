@@ -21,13 +21,13 @@
             app:layout_constraintGuide_begin="304dp" />
 
         <ImageView
-            android:id="@+id/bgAvengers"
+            android:id="@+id/backDropMovie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/moviephotobackground"
             android:foreground="@drawable/gradient"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_avengers"
+            tools:src="@drawable/bg_avengers"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

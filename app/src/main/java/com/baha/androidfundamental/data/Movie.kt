@@ -1,10 +1,18 @@
 package com.baha.androidfundamental.data
 
+import com.android.academy.fundamentals.homework.features.data.Genre
+
+
 data class Movie(
-    val movieName: String,
-    val movieDuration: String,
-    val movieGenre: String,
-    val movieReviews: String,
-    val moviePg: String,
-    val moviePosterPhoto: Int
+    val id: Int,
+    val title: String,
+    val overview: String,
+    val poster: String,
+    val backdrop: String,
+    val ratings: Float,
+    val numberOfRatings: Int,
+    val minimumAge: Int,
+    val runtime: Int,
+    val genres: List<Genre>,
+    val actors: List<Actor>
 )
