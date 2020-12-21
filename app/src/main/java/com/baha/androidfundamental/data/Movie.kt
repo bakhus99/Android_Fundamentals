@@ -1,8 +1,11 @@
 package com.baha.androidfundamental.data
 
+import android.os.Parcelable
 import com.android.academy.fundamentals.homework.features.data.Genre
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
-
+@Parcelize
 data class Movie(
     val id: Int,
     val title: String,
@@ -13,6 +16,6 @@ data class Movie(
     val numberOfRatings: Int,
     val minimumAge: Boolean,
     val runtime: Int,
-    val genres: List<Genre>,
-    val actors: List<Actor>
-)
+    val genres: @RawValue List<Genre>,
+    val actors: @RawValue List<Actor>
+) : Parcelable

@@ -9,6 +9,10 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    androidExtensions {
+        experimental = true
+    }
+
     defaultConfig {
         applicationId "com.baha.androidfundamental"
         minSdkVersion 23

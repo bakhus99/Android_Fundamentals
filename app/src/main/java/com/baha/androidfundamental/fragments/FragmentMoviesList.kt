@@ -21,8 +21,6 @@ import kotlinx.coroutines.withContext
 class FragmentMoviesList : Fragment() {
 
     private var recycler: RecyclerView? = null
-
-    private var movieList = MovieListAdapter()
     private val adapter = MovieListAdapter()
     private var coroutineScope: CoroutineScope? = null
 
@@ -37,7 +35,6 @@ class FragmentMoviesList : Fragment() {
 
     override fun onStart() {
         super.onStart()
-//        updateData()
         loadMovieFromJson()
     }
 
@@ -50,10 +47,6 @@ class FragmentMoviesList : Fragment() {
             }
         }
     }
-
-//    private fun updateData() {
-//        adapter.bindMovie(movieList)
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -71,18 +64,14 @@ class FragmentMoviesList : Fragment() {
     }
 
     private val clickListener =
-        MovieListAdapter.ItemClickListener { movie -> onClick(movie,id) }
+        MovieListAdapter.ItemClickListener { movie -> onClick(movie) }
 
-    private fun onClick(movie: Movie,movieId:Int) {
+    private fun onClick(movie: Movie) {
         fragmentManager?.beginTransaction()
-            ?.replace(R.id.frame, FragmentMoviesDetails.newInstance(movieId))
+            ?.replace(R.id.frame, FragmentMoviesDetails.newInstance(movie))
             ?.addToBackStack(null)
             ?.commit()
     }
-
-//    companion object {
-//        fun newInstance() = FragmentMoviesList()
-//    }
 
     private fun getColumns(context: Context, columnWidthDp: Float): Int {
         val displayMetrics: DisplayMetrics = context.resources.displayMetrics
