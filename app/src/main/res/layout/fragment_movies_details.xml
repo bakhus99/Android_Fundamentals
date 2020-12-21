@@ -71,7 +71,7 @@
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="154dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/pg13"
+            android:text="@string/age"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayoutBack" />

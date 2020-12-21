@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.fundamentals.homework.features.data.loadMovies
@@ -25,7 +26,8 @@ class FragmentMoviesDetails : Fragment() {
 
     //private val actors = ActorsList.getActorsList()
     private val adapter = ActorAdapter()
-    private lateinit var movieBackdrop:ImageView
+    private lateinit var movieBackdrop: ImageView
+    private lateinit var tvTitle: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,7 +65,8 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     private fun initView(view: View) {
-         movieBackdrop = view.findViewById(R.id.backDropMovie)
+        movieBackdrop = view.findViewById(R.id.backDropMovie)
+        tvTitle = view.findViewById(R.id.tvTitle)
 
     }
 
@@ -71,12 +74,22 @@ class FragmentMoviesDetails : Fragment() {
         Glide.with(requireContext())
             .load(movie.backdrop)
             .into(movieBackdrop)
-
-
+        tvTitle.text = movie.title
     }
 
     private suspend fun findMovie(movieId: Int?): Movie? {
         return loadMovies(requireContext()).find { it.id == movieId }
+    }
+
+    companion object {
+        private const val ID = "ID"
+        fun newInstance(movieId: Int): FragmentMoviesDetails {
+            val movieFragment = FragmentMoviesDetails()
+            val bundle = Bundle()
+            bundle.putInt(ID, movieId)
+            movieFragment.arguments = bundle
+            return movieFragment
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -88,17 +101,6 @@ class FragmentMoviesDetails : Fragment() {
         }
     }
 
-    companion object {
-        private const val ID = "ID"
 
-        fun newInstance(movieId: Int): FragmentMoviesDetails {
-            val movieFragment = FragmentMoviesDetails()
-            val bundle = Bundle()
-            bundle.putInt(ID, movieId)
-            movieFragment.arguments = bundle
-            return movieFragment
-        }
-
-    }
 
 }

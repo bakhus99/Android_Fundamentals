@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.data.Movie
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 class MovieListAdapter() :
     RecyclerView.Adapter<MovieListAdapter.MovieListViewHolder>() {
@@ -54,13 +55,29 @@ class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(movie: Movie) {
         Glide.with(itemView.context)
             .load(movie.poster)
+            .transform(
+                RoundedCorners(
+                    itemView.context.resources.getDimension(
+                        R.dimen.small
+                    ).toInt()
+                )
+            )
             .into(moviePoster)
         movieName.text = movie.title
-        movieDuration.text = movie.runtime.toString()
-        movieGenre.text = movie.genres.toString()
-        moviePg.text = movie.minimumAge.toString()
-        movieReviews.text = movie.numberOfRatings.toString()
-        movieRating.numStars = movie.ratings.toInt()
+        movieDuration.text =
+            itemView.context.getString(R.string.movie_duration, movie.runtime.toString())
+        movieGenre.text = movie.genres.toString().replace("[", "").replace("]", "")
+        moviePg.text = itemView.context.getString(
+            R.string.age,
+            if (movie.minimumAge) itemView.context.getString(
+                R.string.pg16
+            ) else itemView.context.getString(
+                R.string.pg13
+            )
+        )
+        movieReviews.text =
+            itemView.context.getString(R.string.reviews, movie.numberOfRatings.toString())
+        movieRating.progress = movie.ratings.toInt()
     }
 }
 }

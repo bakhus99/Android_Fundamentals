@@ -11,7 +11,7 @@ data class Movie(
     val backdrop: String,
     val ratings: Float,
     val numberOfRatings: Int,
-    val minimumAge: Int,
+    val minimumAge: Boolean,
     val runtime: Int,
     val genres: List<Genre>,
     val actors: List<Actor>
