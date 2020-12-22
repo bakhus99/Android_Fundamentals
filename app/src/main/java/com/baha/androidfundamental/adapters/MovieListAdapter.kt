@@ -18,11 +18,6 @@ class MovieListAdapter() :
     private var movies = listOf<Movie>()
     var onMovieClickListener: ItemClickListener? = null
 
-    fun bindMovie(newMovie: List<Movie>) {
-        movies = newMovie
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movies, parent, false)
@@ -38,30 +33,35 @@ class MovieListAdapter() :
 
     override fun getItemCount(): Int = movies.size
 
+    fun bindMovie(newMovie: List<Movie>) {
+        movies = newMovie
+        notifyDataSetChanged()
+    }
+
     fun interface ItemClickListener {
         fun onClick(movie: Movie)
     }
 
-class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private val moviePoster: ImageView = itemView.findViewById(R.id.ivPosterPhoto)
-    private val movieName: TextView = itemView.findViewById(R.id.tvMovieName)
-    private val movieDuration: TextView = itemView.findViewById(R.id.tvMovieTime)
-    private val movieGenre: TextView = itemView.findViewById(R.id.tvGenre)
-    private val moviePg: TextView = itemView.findViewById(R.id.tvPg)
-    private val movieReviews: TextView = itemView.findViewById(R.id.tvReviews)
-    private val movieRating: RatingBar = itemView.findViewById(R.id.ratingBar)
+        private val moviePoster: ImageView = itemView.findViewById(R.id.ivPosterPhoto)
+        private val movieName: TextView = itemView.findViewById(R.id.tvMovieName)
+        private val movieDuration: TextView = itemView.findViewById(R.id.tvMovieTime)
+        private val movieGenre: TextView = itemView.findViewById(R.id.tvGenre)
+        private val moviePg: TextView = itemView.findViewById(R.id.tvPg)
+        private val movieReviews: TextView = itemView.findViewById(R.id.tvReviews)
+        private val movieRating: RatingBar = itemView.findViewById(R.id.ratingBar)
 
-    fun bind(movie: Movie) {
-        Glide.with(itemView.context)
-            .load(movie.poster)
-            .transform(
-                RoundedCorners(
-                    itemView.context.resources.getDimension(
-                        R.dimen.small
-                    ).toInt()
+        fun bind(movie: Movie) {
+            Glide.with(itemView.context)
+                .load(movie.poster)
+                .transform(
+                    RoundedCorners(
+                        itemView.context.resources.getDimension(
+                            R.dimen.small
+                        ).toInt()
+                    )
                 )
-            )
             .into(moviePoster)
         movieName.text = movie.title
         movieDuration.text =

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.baha.androidfundamental.Constance.MAX_ACTORS
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.data.Actor
 import com.bumptech.glide.Glide
@@ -15,14 +16,12 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 class ActorAdapter:RecyclerView.Adapter<ActorsViewHolder>() {
 
     private var actors = listOf<Actor>()
-    private val maxVisibleActorsOnScreen = 4
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.view_holder_actors, parent, false)
         view.layoutParams.width =
-            ((parent.measuredWidth - (maxVisibleActorsOnScreen) * parent.context.resources.getDimension(R.dimen.small)) / maxVisibleActorsOnScreen).toInt()
+            ((parent.measuredWidth - (MAX_ACTORS) * parent.context.resources.getDimension(R.dimen.small)) / MAX_ACTORS).toInt()
         return ActorsViewHolder(view)
     }
 

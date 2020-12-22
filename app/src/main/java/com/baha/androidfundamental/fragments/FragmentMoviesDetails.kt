@@ -10,19 +10,16 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.android.academy.fundamentals.homework.features.data.loadMovies
+import com.baha.androidfundamental.Constance.MOVIE
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.ActorAdapter
 import com.baha.androidfundamental.data.Movie
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class FragmentMoviesDetails : Fragment() {
 
-    private var coroutineScope: CoroutineScope? = null
+    private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private var recycler: RecyclerView? = null
     private val adapter = ActorAdapter()
     private lateinit var movieBackdrop: ImageView
@@ -33,7 +30,6 @@ class FragmentMoviesDetails : Fragment() {
     private lateinit var tvOverview: TextView
     private lateinit var tvAge: TextView
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,15 +38,29 @@ class FragmentMoviesDetails : Fragment() {
         return inflater.inflate(R.layout.fragment_movies_details, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
-        loadActorsFromjson()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView(view)
+        recycler = view.findViewById(R.id.rcActors)
+        recycler?.adapter = adapter
+        view.findViewById<LinearLayout>(R.id.linearLayoutBack).setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
     }
 
-    private fun loadActorsFromjson() {
-        coroutineScope = CoroutineScope(Dispatchers.IO)
-        coroutineScope?.launch {
-            val movie = arguments?.getParcelable<Movie>("movie")?.let { findMovie(it) }
+    override fun onStart() {
+        super.onStart()
+        loadActorsFromJson()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineScope.cancel()
+    }
+
+    private fun loadActorsFromJson() {
+        coroutineScope.launch {
+            val movie = arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }
             if (movie != null) {
                 withContext(Dispatchers.Main) {
                     adapter.bindActors(movie.actors)
@@ -89,27 +99,13 @@ class FragmentMoviesDetails : Fragment() {
         rating.progress = movie.ratings.toInt()
     }
 
-    private suspend fun findMovie(movie: Movie): Movie? {
-        return loadMovies(requireContext()).find { it == movie }
-    }
-
     companion object {
         fun newInstance(movie: Movie): FragmentMoviesDetails {
             val movieFragment = FragmentMoviesDetails()
             val bundle = Bundle()
-            bundle.putParcelable("movie", movie)
+            bundle.putParcelable(MOVIE, movie)
             movieFragment.arguments = bundle
             return movieFragment
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initView(view)
-        recycler = view.findViewById(R.id.rcActors)
-        recycler?.adapter = adapter
-        view.findViewById<LinearLayout>(R.id.linearLayoutBack).setOnClickListener {
-            fragmentManager?.popBackStack()
         }
     }
 }
