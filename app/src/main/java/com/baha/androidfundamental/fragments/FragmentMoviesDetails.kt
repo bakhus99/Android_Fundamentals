@@ -18,11 +18,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 
-const val MOVIE = "movie"
+private const val MOVIE = "movie"
 
 class FragmentMoviesDetails : Fragment() {
 
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private var recycler: RecyclerView? = null
     private val adapter = ActorAdapter()
     private lateinit var movieBackdrop: ImageView

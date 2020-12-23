@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-const val MAX_ACTORS = 4
+private const val MAX_ACTORS = 4
 
 class ActorAdapter:RecyclerView.Adapter<ActorsViewHolder>() {
 
