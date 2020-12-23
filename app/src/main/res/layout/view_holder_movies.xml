@@ -3,30 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="30dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginStart="@dimen/space_4x"
+    android:layout_marginTop="@dimen/space_3x"
     android:background="@color/background">
 
     <View
         android:id="@+id/bgPoster"
         android:layout_width="170dp"
-        android:layout_height="0dp"
+        android:layout_height="300dp"
         android:background="@drawable/bg_for_poster"
-        app:layout_constraintBottom_toBottomOf="@id/tvMovieTime"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivPosterPhoto"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="2dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="50dp"
         android:contentDescription="@string/movie_poster"
-        android:foreground="@drawable/gradient"
-        android:src="@drawable/avg"
-        android:layout_marginStart="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/gradient"
+        app:layout_constraintBottom_toBottomOf="@id/bgPoster"
+        app:layout_constraintEnd_toEndOf="@id/bgPoster"
+        app:layout_constraintStart_toStartOf="@id/bgPoster"
+        app:layout_constraintTop_toTopOf="@id/bgPoster"
+        tools:src="@drawable/avg" />
+
+    <ImageView
+        android:id="@+id/ivMovieBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/gradient"
+        app:layout_constraintBottom_toBottomOf="@id/bgPoster"
+        app:layout_constraintEnd_toEndOf="@id/bgPoster"
+        app:layout_constraintStart_toStartOf="@id/bgPoster"
+        app:layout_constraintTop_toTopOf="@id/bgPoster" />
 
     <ImageView
         android:id="@+id/ivPg"
@@ -34,16 +54,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="@dimen/space_2x"
-        android:src="@drawable/pg"
-        app:layout_constraintStart_toStartOf="@id/ivPosterPhoto"
-        app:layout_constraintTop_toTopOf="@id/ivPosterPhoto" />
+        android:background="@drawable/pg"
+        app:layout_constraintStart_toStartOf="@id/bgPoster"
+        app:layout_constraintTop_toTopOf="@id/bgPoster" />
 
     <TextView
         android:id="@+id/tvPg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/pg13"
+        android:text="@string/age"
         android:textSize="12sp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/ivPg"
@@ -59,21 +79,25 @@
         android:layout_marginEnd="6dp"
         android:contentDescription="@string/like"
         android:src="@drawable/like"
-        app:layout_constraintEnd_toEndOf="@id/ivPosterPhoto"
-        app:layout_constraintTop_toTopOf="@id/ivPosterPhoto" />
+        app:layout_constraintEnd_toEndOf="@id/bgPoster"
+        app:layout_constraintTop_toTopOf="@id/bgPoster" />
 
     <TextView
         android:id="@+id/tvGenre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="26dp"
         android:layout_marginStart="@dimen/space_2x"
-        android:layout_marginEnd="@dimen/space_4x"
-        android:layout_marginBottom="22dp"
-        android:text="@string/movie_genre"
+        android:gravity="bottom"
+        android:layout_marginEnd="@dimen/space_2x"
+        app:layout_constraintStart_toStartOf="@id/bgPoster"
         android:textColor="@color/genreColor"
         android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivPosterPhoto"
-        app:layout_constraintStart_toStartOf="@id/ivPosterPhoto" />
+        app:layout_constraintBottom_toBottomOf="@id/ivMovieBackground"
+        app:layout_constraintEnd_toEndOf="@id/bgPoster"
+        app:layout_constraintTop_toTopOf="@id/bgPoster"
+        tools:ignore="SmallSp"
+        tools:text="@string/movie_genre" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -83,49 +107,58 @@
         android:layout_marginStart="@dimen/space_2x"
         android:layout_marginBottom="@dimen/space_2x"
         android:numStars="5"
+        android:layout_marginTop="@dimen/space_1x"
         android:progressDrawable="@drawable/rating_small"
         android:rating="4"
-        app:layout_constraintBottom_toBottomOf="@id/ivPosterPhoto"
+        app:layout_constraintBottom_toTopOf="@id/tvMovieName"
         app:layout_constraintEnd_toStartOf="@id/tvReviews"
-        app:layout_constraintStart_toStartOf="@id/ivPosterPhoto"
+        app:layout_constraintStart_toStartOf="@id/bgPoster"
         app:layout_constraintTop_toBottomOf="@id/tvGenre" />
 
     <TextView
         android:id="@+id/tvReviews"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_1x"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/reviews"
         android:textColor="@color/reviewColor"
         android:textSize="8sp"
+        android:layout_marginEnd="@dimen/space_2x"
+        app:layout_constraintEnd_toEndOf="@id/ivMovieBackground"
         app:layout_constraintBottom_toBottomOf="@id/ratingBar"
         app:layout_constraintStart_toEndOf="@id/ratingBar"
         app:layout_constraintTop_toTopOf="@id/ratingBar" />
 
     <TextView
         android:id="@+id/tvMovieName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_2x"
-        android:layout_marginTop="@dimen/space_2x"
+        android:layout_marginTop="@dimen/space_1x"
         android:fontFamily="@font/roboto_bold"
-        android:text="@string/avengers_end_game"
+        android:text="Demon Slayer: Kimetsu no Yaiba - The Movie: Mugen Train"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@id/bgPoster"
-        app:layout_constraintTop_toBottomOf="@id/ivPosterPhoto" />
+        android:layout_marginEnd="@dimen/space_2x"
+        app:layout_constraintBottom_toTopOf="@id/tvMovieTime"
+        app:layout_constraintEnd_toEndOf="@id/bgPoster"
+        app:layout_constraintTop_toBottomOf="@id/ratingBar" />
 
     <TextView
         android:id="@+id/tvMovieTime"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/space_2x"
-        android:textSize="13sp"
+        android:layout_marginEnd="@dimen/space_2x"
+        android:textSize="10sp"
         android:fontFamily="@font/roboto_bold"
         android:text="@string/movie_duration"
+        app:layout_constraintBottom_toTopOf="@id/tvMovieName"
         android:textColor="@color/timeColor"
         app:layout_constraintStart_toStartOf="@id/bgPoster"
-        app:layout_constraintBottom_toBottomOf="@id/bgPoster"
         app:layout_constraintTop_toBottomOf="@id/tvMovieName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

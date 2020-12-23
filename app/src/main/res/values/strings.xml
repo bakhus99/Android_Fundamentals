@@ -2,9 +2,10 @@
     <string name="app_name">Android Fundamental</string>
     <string name="movie_genre">Action, Adventure, Fantasy</string>
     <string name="avengers_title">AVENGERS: \n END GAME</string>
-    <string name="pg13">13+</string>
+    <string name="pg13">13</string>
+    <string name="age">%1$s+</string>
     <string name="back">Back</string>
-    <string name="reviews">125 Reviews</string>
+    <string name="reviews">%1$s Reviews</string>
     <string name="text_overview">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
     <string name="moviephotobackground">MoviePhotoBackground</string>
     <string name="star">star</string>
@@ -21,6 +22,6 @@
     <string name="movie_poster">movie poster</string>
     <string name="like">like photo</string>
     <string name="avengers_end_game">Avengers: End Game</string>
-    <string name="movie_duration">137 min</string>
-    <string name="pg16">16+</string>
+    <string name="movie_duration">%1$s MIN</string>
+    <string name="pg16">16</string>
 </resources>

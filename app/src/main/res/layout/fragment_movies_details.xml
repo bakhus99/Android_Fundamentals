@@ -21,13 +21,14 @@
             app:layout_constraintGuide_begin="304dp" />
 
         <ImageView
-            android:id="@+id/bgAvengers"
+            android:id="@+id/backDropMovie"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:contentDescription="@string/moviephotobackground"
             android:foreground="@drawable/gradient"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_avengers"
+            android:alpha="0.2"
+            tools:src="@drawable/bg_avengers"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +72,7 @@
             android:layout_marginStart="@dimen/space_4x"
             android:layout_marginTop="154dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/pg13"
+            android:text="@string/age"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/linearLayoutBack" />
@@ -177,19 +178,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/overview" />
 
-      <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/rcActors"
-          android:layout_width="match_parent"
-          android:layout_height="0dp"
-          android:orientation="horizontal"
-          android:clipToPadding="false"
-          android:paddingStart="@dimen/space_4x"
-          android:paddingEnd="@dimen/space_4x"
-          tools:listitem="@layout/view_holder_actors"
-          app:layout_constraintTop_toBottomOf="@id/cast"
-          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
-          tools:itemCount="5"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcActors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/space_4x"
+            android:paddingEnd="@dimen/space_4x"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cast"
+            tools:itemCount="5"
+            tools:listitem="@layout/view_holder_actors" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
