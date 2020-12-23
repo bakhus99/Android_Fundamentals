@@ -6,14 +6,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.baha.androidfundamental.Constance.MAX_ACTORS
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.data.Actor
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
+const val MAX_ACTORS = 4
+
 class ActorAdapter:RecyclerView.Adapter<ActorsViewHolder>() {
+
 
     private var actors = listOf<Actor>()
 

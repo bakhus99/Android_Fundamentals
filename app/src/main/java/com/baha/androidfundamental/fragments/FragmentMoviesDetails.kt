@@ -10,12 +10,15 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.baha.androidfundamental.Constance.MOVIE
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.ActorAdapter
 import com.baha.androidfundamental.data.Movie
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+
+const val MOVIE = "movie"
 
 class FragmentMoviesDetails : Fragment() {
 
@@ -59,15 +62,11 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     private fun loadActorsFromJson() {
-        coroutineScope.launch {
             val movie = arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }
             if (movie != null) {
-                withContext(Dispatchers.Main) {
                     adapter.bindActors(movie.actors)
                     bindMovie(movie)
-                }
             }
-        }
     }
 
     private fun initView(view: View) {
