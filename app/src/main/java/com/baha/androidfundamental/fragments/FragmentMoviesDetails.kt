@@ -14,9 +14,6 @@ import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.ActorAdapter
 import com.baha.androidfundamental.data.Movie
 import com.bumptech.glide.Glide
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 
 private const val MOVIE = "movie"
 
@@ -53,11 +50,6 @@ class FragmentMoviesDetails : Fragment() {
     override fun onStart() {
         super.onStart()
         loadActorsFromJson()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        coroutineScope.cancel()
     }
 
     private fun loadActorsFromJson() {
