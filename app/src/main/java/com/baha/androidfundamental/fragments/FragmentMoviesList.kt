@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.baha.androidfundamental.MoviesListViewModel
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.MovieListAdapter
 import com.baha.androidfundamental.data.Movie
 import com.baha.androidfundamental.data.loadMovies
+import com.baha.androidfundamental.databinding.FragmentMoviesListBinding
 import kotlinx.coroutines.*
 
 class FragmentMoviesList : Fragment() {
@@ -20,19 +22,23 @@ class FragmentMoviesList : Fragment() {
     private var recycler: RecyclerView? = null
     private val adapter = MovieListAdapter()
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
+    private val viewModel = MoviesListViewModel()
+    private var _binding: FragmentMoviesListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_movies_list, container, false)
+        _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
+        return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler = view.findViewById<RecyclerView>(R.id.recyclerViewMovieList)
+        recycler = binding.recyclerViewMovieList
         adapter.onMovieClickListener = clickListener
         recycler?.adapter = adapter
         val manager = GridLayoutManager(
@@ -53,6 +59,11 @@ class FragmentMoviesList : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         coroutineScope.cancel()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun loadMovieFromJson() {
