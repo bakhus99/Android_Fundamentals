@@ -33,7 +33,6 @@ class FragmentMoviesList : Fragment() {
     ): View? {
         _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

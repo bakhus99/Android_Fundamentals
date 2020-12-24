@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.MoviesDetailsViewModel
@@ -35,9 +34,9 @@ class FragmentMoviesDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycler = view.findViewById(R.id.rcActors)
+        recycler = binding.rcActors
         recycler?.adapter = adapter
-        view.findViewById<LinearLayout>(R.id.linearLayoutBack).setOnClickListener {
+        binding.linearLayoutBack.setOnClickListener {
             fragmentManager?.popBackStack()
         }
     }

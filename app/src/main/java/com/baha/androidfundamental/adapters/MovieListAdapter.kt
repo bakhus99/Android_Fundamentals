@@ -1,14 +1,11 @@
 package com.baha.androidfundamental.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RatingBar
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.data.Movie
+import com.baha.androidfundamental.databinding.ViewHolderMoviesBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
@@ -19,9 +16,9 @@ class MovieListAdapter() :
     var onMovieClickListener: ItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movies, parent, false)
-        return MovieListViewHolder(view)
+        val binding =
+            ViewHolderMoviesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MovieListViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
@@ -42,15 +39,8 @@ class MovieListAdapter() :
         fun onClick(movie: Movie)
     }
 
-    class MovieListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val moviePoster: ImageView = itemView.findViewById(R.id.ivPosterPhoto)
-        private val movieName: TextView = itemView.findViewById(R.id.tvMovieName)
-        private val movieDuration: TextView = itemView.findViewById(R.id.tvMovieTime)
-        private val movieGenre: TextView = itemView.findViewById(R.id.tvGenre)
-        private val moviePg: TextView = itemView.findViewById(R.id.tvPg)
-        private val movieReviews: TextView = itemView.findViewById(R.id.tvReviews)
-        private val movieRating: RatingBar = itemView.findViewById(R.id.ratingBar)
+    class MovieListViewHolder(private val binding: ViewHolderMoviesBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: Movie) {
             Glide.with(itemView.context)
@@ -62,22 +52,22 @@ class MovieListAdapter() :
                         ).toInt()
                     )
                 )
-            .into(moviePoster)
-        movieName.text = movie.title
-        movieDuration.text =
-            itemView.context.getString(R.string.movie_duration, movie.runtime.toString())
-        movieGenre.text = movie.genres.toString().replace("[", "").replace("]", "")
-        moviePg.text = itemView.context.getString(
-            R.string.age,
-            if (movie.minimumAge) itemView.context.getString(
-                R.string.pg16
-            ) else itemView.context.getString(
-                R.string.pg13
+                .into(binding.ivPosterPhoto)
+            binding.tvMovieName.text = movie.title
+            binding.tvMovieTime.text =
+                itemView.context.getString(R.string.movie_duration, movie.runtime.toString())
+            binding.tvGenre.text = movie.genres.toString().replace("[", "").replace("]", "")
+            binding.tvPg.text = itemView.context.getString(
+                R.string.age,
+                if (movie.minimumAge) itemView.context.getString(
+                    R.string.pg16
+                ) else itemView.context.getString(
+                    R.string.pg13
+                )
             )
-        )
-        movieReviews.text =
-            itemView.context.getString(R.string.reviews, movie.numberOfRatings.toString())
-        movieRating.progress = movie.ratings.toInt()
+            binding.tvReviews.text =
+                itemView.context.getString(R.string.reviews, movie.numberOfRatings.toString())
+            binding.ratingBar.progress = movie.ratings.toInt()
     }
 }
 }
