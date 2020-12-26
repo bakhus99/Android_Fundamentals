@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.baha.androidfundamental.MoviesDetailsViewModel
-import com.baha.androidfundamental.R
+import com.baha.androidfundamental.*
 import com.baha.androidfundamental.adapters.ActorAdapter
 import com.baha.androidfundamental.data.Movie
 import com.baha.androidfundamental.databinding.FragmentMoviesDetailsBinding
@@ -19,7 +19,9 @@ class FragmentMoviesDetails : Fragment() {
 
     private var recycler: RecyclerView? = null
     private val adapter = ActorAdapter()
-    private val viewModel = MoviesDetailsViewModel()
+
+    //private val viewModel = MoviesDetailsViewModel()
+    private lateinit var moviesRepository: MoviesRepository
     private var _binding: FragmentMoviesDetailsBinding? = null
     private val binding get() = _binding!!
 
@@ -28,7 +30,7 @@ class FragmentMoviesDetails : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMoviesDetailsBinding.inflate(inflater,container,false)
+        _binding = FragmentMoviesDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,11 +54,22 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     private fun loadActorsFromJson() {
-            val movie = arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }
-            if (movie != null) {
-                    adapter.bindActors(movie.actors)
-                    bindMovie(movie)
-            }
+        moviesRepository = AsettMovieRepo(requireContext())
+
+        //val movie = arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }
+        val viewModelMovie = ViewModelProvider(
+            this, MoviesDetailsFactory(
+                moviesRepository,
+                arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }!!
+            )
+        ).get(MoviesDetailsViewModel::class.java)
+        viewModelMovie.fetchMovie()
+        viewModelMovie.movie.observe(viewLifecycleOwner) {
+            bindMovie(it)
+        }
+        viewModelMovie.actors.observe(viewLifecycleOwner) {
+            adapter.bindActors(it)
+        }
     }
 
     private fun bindMovie(movie: Movie) {
@@ -76,6 +89,7 @@ class FragmentMoviesDetails : Fragment() {
             )
         )
         binding.ratingBar.progress = movie.ratings.toInt()
+        binding.cast.visibility = if (movie.actors.isEmpty()) View.GONE else View.VISIBLE
     }
 
     companion object {
