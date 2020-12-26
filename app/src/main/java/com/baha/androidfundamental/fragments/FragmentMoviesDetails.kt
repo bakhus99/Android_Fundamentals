@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.baha.androidfundamental.*
+import com.baha.androidfundamental.AsettMovieRepo
+import com.baha.androidfundamental.MoviesDetailsFactory
+import com.baha.androidfundamental.MoviesRepository
+import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.ActorAdapter
 import com.baha.androidfundamental.data.Movie
 import com.baha.androidfundamental.databinding.FragmentMoviesDetailsBinding
+import com.baha.androidfundamental.models.MoviesDetailsViewModel
 import com.bumptech.glide.Glide
 
 private const val MOVIE = "movie"
@@ -19,8 +23,7 @@ class FragmentMoviesDetails : Fragment() {
 
     private var recycler: RecyclerView? = null
     private val adapter = ActorAdapter()
-
-    //private val viewModel = MoviesDetailsViewModel()
+    private lateinit var viewModelFactory: MoviesDetailsFactory
     private lateinit var moviesRepository: MoviesRepository
     private var _binding: FragmentMoviesDetailsBinding? = null
     private val binding get() = _binding!!
@@ -55,15 +58,14 @@ class FragmentMoviesDetails : Fragment() {
 
     private fun loadActorsFromJson() {
         moviesRepository = AsettMovieRepo(requireContext())
-
-        //val movie = arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }
+        viewModelFactory = MoviesDetailsFactory(
+            moviesRepository,
+            arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }!!
+        )
         val viewModelMovie = ViewModelProvider(
-            this, MoviesDetailsFactory(
-                moviesRepository,
-                arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }!!
-            )
+            this, viewModelFactory
         ).get(MoviesDetailsViewModel::class.java)
-        viewModelMovie.fetchMovie()
+        viewModelMovie.addMovie()
         viewModelMovie.movie.observe(viewLifecycleOwner) {
             bindMovie(it)
         }

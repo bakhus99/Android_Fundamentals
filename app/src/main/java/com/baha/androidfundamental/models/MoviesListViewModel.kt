@@ -1,8 +1,9 @@
-package com.baha.androidfundamental
+package com.baha.androidfundamental.models
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.baha.androidfundamental.MoviesRepository
 import com.baha.androidfundamental.data.Movie
 import kotlinx.coroutines.launch
 
