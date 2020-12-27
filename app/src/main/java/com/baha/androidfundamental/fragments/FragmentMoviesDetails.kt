@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.baha.androidfundamental.AsettMovieRepo
 import com.baha.androidfundamental.MoviesDetailsFactory
-import com.baha.androidfundamental.MoviesRepository
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.ActorAdapter
 import com.baha.androidfundamental.data.Movie
@@ -24,48 +22,31 @@ class FragmentMoviesDetails : Fragment() {
     private var recycler: RecyclerView? = null
     private val adapter = ActorAdapter()
     private lateinit var viewModelFactory: MoviesDetailsFactory
-    private lateinit var moviesRepository: MoviesRepository
-    private var _binding: FragmentMoviesDetailsBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentMoviesDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMoviesDetailsBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_movies_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = FragmentMoviesDetailsBinding.bind(view)
         recycler = binding.rcActors
         recycler?.adapter = adapter
         binding.linearLayoutBack.setOnClickListener {
             fragmentManager?.popBackStack()
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        loadActorsFromJson()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    private fun loadActorsFromJson() {
-        moviesRepository = AsettMovieRepo(requireContext())
         viewModelFactory = MoviesDetailsFactory(
-            moviesRepository,
             arguments?.getParcelable<Movie>(MOVIE)?.let { (it) }!!
         )
         val viewModelMovie = ViewModelProvider(
             this, viewModelFactory
         ).get(MoviesDetailsViewModel::class.java)
-        viewModelMovie.addMovie()
+        viewModelMovie.fetchMovie()
         viewModelMovie.movie.observe(viewLifecycleOwner) {
             bindMovie(it)
         }

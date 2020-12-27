@@ -7,12 +7,15 @@ import com.baha.androidfundamental.MoviesRepository
 import com.baha.androidfundamental.data.Movie
 import kotlinx.coroutines.launch
 
-class MoviesListViewModel(private val repository: MoviesRepository):ViewModel() {
+class MoviesListViewModel(private val repository: MoviesRepository) : ViewModel() {
 
-private val _mutableMovieList = MutableLiveData<List<Movie>> (emptyList())
+    private val _mutableMovieList = MutableLiveData<List<Movie>>(emptyList())
     val movieList get() = _mutableMovieList
 
-    fun loadMovieJson(){
+    fun loadMovieJson() {
+        if (movieList.value == null) {
+            return
+        }
         viewModelScope.launch {
             val movies = repository.getMovies()
             movieList.value = movies
