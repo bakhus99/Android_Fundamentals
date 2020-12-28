@@ -16,7 +16,6 @@ private const val MAX_ACTORS = 4
 
 class ActorAdapter:RecyclerView.Adapter<ActorsViewHolder>() {
 
-
     private var actors = listOf<Actor>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorsViewHolder {
