@@ -16,6 +16,8 @@ import com.baha.androidfundamental.models.MoviesDetailsViewModel
 import com.bumptech.glide.Glide
 
 private const val MOVIE = "movie"
+private const val API_KEY = "8f43ee4b8e24bbbcb9e8c7efc02e8879"
+private const val BASE_URL = "https://api.themoviedb.org/3/"
 
 class FragmentMoviesDetails : Fragment() {
 

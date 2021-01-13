@@ -21,6 +21,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 
+private const val API_KEY = "8f43ee4b8e24bbbcb9e8c7efc02e8879"
+
 class FragmentMoviesList : Fragment() {
 
     private var recycler: RecyclerView? = null
