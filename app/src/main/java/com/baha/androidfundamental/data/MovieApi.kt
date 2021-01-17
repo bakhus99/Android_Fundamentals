@@ -19,7 +19,6 @@ interface MovieApi {
     suspend fun getMovie(
         @Path("movie_id") id: Int?,
         @Query("api_key") api: String
-
     ): MovieJsonModel
 
     @GET("movie/{movie_id}/credits")

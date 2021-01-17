@@ -21,10 +21,9 @@ object NetworkModule {
         Retrofit.Builder()
             .client(okHttpClients)
             .baseUrl(BASE_URL)
-            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(json.asConverterFactory(contentType))
             .build()
             .create(MovieApi::class.java)
     }
-    //val api = retrofit.create(MovieApi::class.java)
 }
 
