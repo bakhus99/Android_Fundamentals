@@ -3,6 +3,7 @@ package com.baha.androidfundamental
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.baha.androidfundamental.models.MoviesListViewModel
+import com.baha.androidfundamental.repositories.MoviesRepository
 
 class MoviesListFactory(private val repository: MoviesRepository) : ViewModelProvider.NewInstanceFactory() {
 

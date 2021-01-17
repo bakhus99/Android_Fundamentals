@@ -8,26 +8,23 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 object NetworkModule {
-    private const val baseUrl = "https://api.themoviedb.org/3/"
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
+    private val contentType = "application/json".toMediaType()
     private val okHttpClients = OkHttpClient().newBuilder()
         .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        // .addInterceptor(CatsApiHeaderInterceptor())
         .build()
-
-
-
-private val json = Json {
-    prettyPrint = true
-    ignoreUnknownKeys = true
-}
-val api:MovieApi by lazy {
-    Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .client(okHttpClients)
-        .addConverterFactory(json.asConverterFactory(contentType))
-        .build()
-        .create(MovieApi::class.java)
-}
+    private val json = Json {
+        prettyPrint = true
+        ignoreUnknownKeys = true
+    }
+     val api: MovieApi by lazy {
+        Retrofit.Builder()
+            .client(okHttpClients)
+            .baseUrl(BASE_URL)
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
+            .build()
+            .create(MovieApi::class.java)
+    }
+    //val api = retrofit.create(MovieApi::class.java)
 }
 
-private val contentType = "application/json".toMediaType()
