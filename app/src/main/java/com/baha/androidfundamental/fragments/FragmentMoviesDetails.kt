@@ -15,13 +15,10 @@ import com.baha.androidfundamental.data.NetworkModule
 import com.baha.androidfundamental.databinding.FragmentMoviesDetailsBinding
 import com.baha.androidfundamental.models.MoviesDetailsViewModel
 import com.baha.androidfundamental.repositories.ActorsRepository
-import com.baha.androidfundamental.repositories.MoviesRepository
 import com.baha.androidfundamental.repositories.NetworkActorsRepository
 import com.bumptech.glide.Glide
 
 private const val MOVIE = "movie"
-private const val API_KEY = "8f43ee4b8e24bbbcb9e8c7efc02e8879"
-private const val BASE_URL = "https://api.themoviedb.org/3/"
 
 class FragmentMoviesDetails : Fragment() {
 
@@ -30,7 +27,6 @@ class FragmentMoviesDetails : Fragment() {
     private lateinit var viewModelFactory: MoviesDetailsFactory
     private lateinit var binding: FragmentMoviesDetailsBinding
     private lateinit var actorsRepository: ActorsRepository
-    private lateinit var movieRepositiry: MoviesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,11 +44,10 @@ class FragmentMoviesDetails : Fragment() {
         binding.linearLayoutBack.setOnClickListener {
             fragmentManager?.popBackStack()
         }
-        //val movieId = arguments?.getInt(MOVIE)
         actorsRepository = NetworkActorsRepository(NetworkModule.api)
-        viewModelFactory = arguments?.getParcelable<Movie>(MOVIE)?.let {
+        viewModelFactory = arguments?.getParcelable<Movie>(MOVIE)?.let { movie ->
             MoviesDetailsFactory(
-                it,actorsRepository,it.id .let { (it) }
+                movie,actorsRepository,movie.id .let { (it) }
             )
         }!!
         val viewModelMovie = ViewModelProvider(
@@ -64,6 +59,9 @@ class FragmentMoviesDetails : Fragment() {
         }
         viewModelMovie.actors.observe(viewLifecycleOwner) {
             adapter.bindActors(it)
+        }
+        viewModelMovie.isLoading.observe(viewLifecycleOwner){ loading ->
+            binding.pbMovieDetails.visibility = if (loading) View.VISIBLE else View.GONE
         }
     }
 

@@ -20,15 +20,18 @@ class MoviesDetailsViewModel(
     val movie: LiveData<Movie> = _movie
     private val _actors = MutableLiveData<List<Actor>>()
     val actors: LiveData<List<Actor>> = _actors
+    private val _isLoading = MutableLiveData(false)
+    val isLoading: LiveData<Boolean> = _isLoading
 
     fun fetchMovie() {
         if (movie.value != null) {
             return
         }
         viewModelScope.launch {
+            _isLoading.value = true
             _movie.value = movies
             _actors.value = actorsRepository.getActors(id)
-            //_actors.value = movie.value?.actors
+            _isLoading.value = false
         }
     }
 }

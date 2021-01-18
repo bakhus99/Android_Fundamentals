@@ -23,8 +23,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 
-private const val API_KEY = "8f43ee4b8e24bbbcb9e8c7efc02e8879"
-
 class FragmentMoviesList : Fragment() {
 
     private var recycler: RecyclerView? = null
@@ -60,10 +58,11 @@ class FragmentMoviesList : Fragment() {
             ViewModelProvider(this, MoviesListFactory(moviesRepository)).get(
                 MoviesListViewModel::class.java
             )
-
-
         viewModel.movieList.observe(viewLifecycleOwner) {
             adapter.bindMovie(it)
+        }
+        viewModel.isLoading.observe(viewLifecycleOwner){ loading ->
+            binding.pbMovieList.visibility = if (loading) View.VISIBLE else View.GONE
         }
         viewModel.loadMovieJson()
     }
