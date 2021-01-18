@@ -52,7 +52,7 @@ class FragmentMoviesDetails : Fragment() {
         actorsRepository = NetworkActorsRepository(NetworkModule.api)
         viewModelFactory = arguments?.getParcelable<Movie>(MOVIE)?.let {
             MoviesDetailsFactory(
-                it,actorsRepository,id.let { (it) }
+                it,actorsRepository,it.id .let { (it) }
             )
         }!!
         val viewModelMovie = ViewModelProvider(

@@ -2,8 +2,8 @@ package com.baha.androidfundamental.repositories
 
 import com.baha.androidfundamental.data.Actor
 
-class AssettActorRepo(val repo: MoviesRepository) : ActorsRepository {
+class AssettActorRepo(val repository: MoviesRepository) : ActorsRepository {
     override suspend fun getActors(id: Int): List<Actor> {
-        return repo.getMovie(id).actors
+        return repository.getMovie(id).actors
     }
 }
