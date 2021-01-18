@@ -8,7 +8,7 @@ data class ActorsJsonModel(
     val id: Int,
     val name: String,
     @SerialName("profile_path")
-    val actorPicture: String
+    val actorPicture: String?
 )
 
 @Serializable

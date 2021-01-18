@@ -10,6 +10,6 @@ class AsettMovieRepo(private val context: Context) : MoviesRepository {
     }
 
     override suspend fun getMovie(id: Int): Movie {
-        return loadMovies(context).find { it.id ==id }!!
+        return loadMovies(context).find { it.id == id }!!
     }
 }

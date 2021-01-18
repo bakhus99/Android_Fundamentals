@@ -23,7 +23,7 @@ interface MovieApi {
 
     @GET("movie/{movie_id}/credits")
     suspend fun getActors(
-        @Path("movie_id") id: Int,
+        @Path("movie_id") id: Int?,
         @Query("api_key") api: String
     ): ActorsData
 }

@@ -15,6 +15,7 @@ import com.baha.androidfundamental.data.NetworkModule
 import com.baha.androidfundamental.databinding.FragmentMoviesDetailsBinding
 import com.baha.androidfundamental.models.MoviesDetailsViewModel
 import com.baha.androidfundamental.repositories.ActorsRepository
+import com.baha.androidfundamental.repositories.MoviesRepository
 import com.baha.androidfundamental.repositories.NetworkActorsRepository
 import com.bumptech.glide.Glide
 
@@ -29,6 +30,7 @@ class FragmentMoviesDetails : Fragment() {
     private lateinit var viewModelFactory: MoviesDetailsFactory
     private lateinit var binding: FragmentMoviesDetailsBinding
     private lateinit var actorsRepository: ActorsRepository
+    private lateinit var movieRepositiry: MoviesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,10 +48,11 @@ class FragmentMoviesDetails : Fragment() {
         binding.linearLayoutBack.setOnClickListener {
             fragmentManager?.popBackStack()
         }
+        //val movieId = arguments?.getInt(MOVIE)
         actorsRepository = NetworkActorsRepository(NetworkModule.api)
         viewModelFactory = arguments?.getParcelable<Movie>(MOVIE)?.let {
             MoviesDetailsFactory(
-                it,actorsRepository,id?.let { (it) }!!
+                it,actorsRepository,id.let { (it) }
             )
         }!!
         val viewModelMovie = ViewModelProvider(
