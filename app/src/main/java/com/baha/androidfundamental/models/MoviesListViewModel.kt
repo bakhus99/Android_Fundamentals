@@ -23,8 +23,8 @@ class MoviesListViewModel(private val repository: MoviesRepository) : ViewModel(
         viewModelScope.launch {
             _isLoading.value = true
             val movies = repository.getMovies()
-            _mutableMovieList.value = movies
             _isLoading.value = false
+            _mutableMovieList.value = movies
         }
     }
 }

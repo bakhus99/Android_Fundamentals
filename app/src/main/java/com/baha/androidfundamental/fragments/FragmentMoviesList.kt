@@ -58,11 +58,11 @@ class FragmentMoviesList : Fragment() {
             ViewModelProvider(this, MoviesListFactory(moviesRepository)).get(
                 MoviesListViewModel::class.java
             )
+        viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
+            binding.pbMovieList.visibility = if (loading) View.VISIBLE else View.GONE
+        }
         viewModel.movieList.observe(viewLifecycleOwner) {
             adapter.bindMovie(it)
-        }
-        viewModel.isLoading.observe(viewLifecycleOwner){ loading ->
-            binding.pbMovieList.visibility = if (loading) View.VISIBLE else View.GONE
         }
         viewModel.loadMovieJson()
     }

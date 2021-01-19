@@ -5,9 +5,10 @@ import com.baha.androidfundamental.data.MovieApi
 import com.baha.androidfundamental.data.convertToModel
 
 class NetworkMovieRepository(private val movieApi: MovieApi) : MoviesRepository {
+
     override suspend fun getMovies(): List<Movie> {
-        val moviesJsonModel = movieApi.getNowPlayingMovie("8f43ee4b8e24bbbcb9e8c7efc02e8879").movies
-        return moviesJsonModel.map {
+        val moviesToModelJson = movieApi.getPopularMovie("8f43ee4b8e24bbbcb9e8c7efc02e8879").movies
+        return moviesToModelJson.map {
             getMovie(it.id)
         }
     }
