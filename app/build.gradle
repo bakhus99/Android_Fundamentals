@@ -5,9 +5,14 @@ plugins {
     id 'kotlin-android-extensions'
 }
 
+
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
     androidExtensions {
         experimental = true
@@ -19,6 +24,9 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "API_KEY", localProperties['apiKey']
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
