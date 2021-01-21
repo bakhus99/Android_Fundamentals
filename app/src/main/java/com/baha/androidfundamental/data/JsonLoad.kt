@@ -1,7 +1,6 @@
 package com.baha.androidfundamental.data
 
 import android.content.Context
-import com.android.academy.fundamentals.homework.features.data.Genre
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName

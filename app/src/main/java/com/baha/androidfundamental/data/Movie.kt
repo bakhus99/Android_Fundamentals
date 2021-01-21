@@ -1,7 +1,6 @@
 package com.baha.androidfundamental.data
 
 import android.os.Parcelable
-import com.android.academy.fundamentals.homework.features.data.Genre
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.parcel.RawValue
 

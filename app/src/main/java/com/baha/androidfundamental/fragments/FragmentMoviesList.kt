@@ -10,13 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.baha.androidfundamental.AsettMovieRepo
 import com.baha.androidfundamental.MoviesListFactory
 import com.baha.androidfundamental.R
 import com.baha.androidfundamental.adapters.MovieListAdapter
 import com.baha.androidfundamental.data.Movie
+import com.baha.androidfundamental.data.NetworkModule
 import com.baha.androidfundamental.databinding.FragmentMoviesListBinding
 import com.baha.androidfundamental.models.MoviesListViewModel
+import com.baha.androidfundamental.repositories.MoviesRepository
+import com.baha.androidfundamental.repositories.NetworkMovieRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -27,6 +29,7 @@ class FragmentMoviesList : Fragment() {
     private val adapter = MovieListAdapter()
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private lateinit var binding: FragmentMoviesListBinding
+    private lateinit var moviesRepository: MoviesRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,14 +53,18 @@ class FragmentMoviesList : Fragment() {
             )
         )
         recycler?.layoutManager = manager
+        moviesRepository = NetworkMovieRepository(NetworkModule.api)
         val viewModel =
-            ViewModelProvider(this, MoviesListFactory(AsettMovieRepo(requireContext()))).get(
+            ViewModelProvider(this, MoviesListFactory(moviesRepository)).get(
                 MoviesListViewModel::class.java
             )
-        viewModel.loadMovieJson()
+        viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
+            binding.pbMovieList.visibility = if (loading) View.VISIBLE else View.GONE
+        }
         viewModel.movieList.observe(viewLifecycleOwner) {
             adapter.bindMovie(it)
         }
+        viewModel.loadMovieJson()
     }
 
     override fun onDestroy() {
